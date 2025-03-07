@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Medicine Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+        }
+        .card {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <div class="card">
+            <input type="text" id="productId" placeholder="Product ID" required>
+            <input type="text" id="productDesc" placeholder="Product Description" required>
+            <input type="number" id="quantity" placeholder="Quantity" required>
+            <input type="text" id="shipper" placeholder="Shipper" required>
+            <input type="text" id="receiver" placeholder="Receiver" required>
+            <input type="text" id="trackingId" placeholder="Tracking ID" required>
+            <button onclick="login()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const productId = document.getElementById("productId").value;
+            const productDesc = document.getElementById("productDesc").value.toLowerCase();
+            
+            const routes = {
+                "XTR-4592-AQ": "tetanus",
+                "PLN-7830-ZX": "insulin",
+                "MNV-2255-YT": "amoxicillin",
+                "QRS-9911-OP": "vaccine a"
+            };
+            
+            if (routes[productId] && routes[productId] === productDesc) {
+                window.location.href = `${productDesc}.html`;
+            } else {
+                alert("Invalid Product ID or Product Description.");
+            }
+        }
+    </script>
+</body>
+</html>
